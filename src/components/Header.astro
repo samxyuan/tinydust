@@ -1,0 +1,74 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+
+
+<header>
+	<div class="header-inner container">
+		<nav>
+			<h2><a href="/">{SITE_TITLE}</a></h2>
+			<div class="internal-links">
+				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+				<ThemeToggle />
+			</div>
+			<!-- social-links block stays the same -->
+		</nav>
+	</div>
+</header>
+
+
+
+<style>
+  header {
+    margin: 0;
+    background-color: var(--bg);
+  }
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
+  h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .internal-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .internal-links a {
+    padding: 1em 0.5em;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+  }
+  .internal-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0.4em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--text);
+  }
+  .social-links,
+  .social-links a {
+    display: flex;
+  }
+  @media (max-width: 720px) {
+    .social-links {
+      display: none;
+    }
+  }
+</style>
